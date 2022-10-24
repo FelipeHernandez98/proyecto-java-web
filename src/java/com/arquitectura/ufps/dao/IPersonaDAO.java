@@ -15,9 +15,9 @@ public interface IPersonaDAO {
     
     public List<Persona> getPersonas();
     public Persona getId(int id);
-    public Persona add(Persona p);
-    public Persona update(Persona p);
-    public void delete(int id);
+    public int add(Persona p);
+    public int update(Persona p);
+    public int delete(int id);
     
     
 }
