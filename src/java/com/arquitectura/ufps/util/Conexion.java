@@ -21,7 +21,7 @@ public class Conexion {
     private static String USER = "root";
     private static String PASS = "1234";
     
-    public static Connection Conexion(){
+    public static Connection Conectar(){
         
         try{
             Class.forName("org.mariadb.jdbc.Driver");
