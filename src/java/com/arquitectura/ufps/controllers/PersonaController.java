@@ -4,9 +4,10 @@
  */
 package com.arquitectura.ufps.controllers;
 
-import com.arquitectura.ufps.dao.IPersonaDAO;
+//import com.arquitectura.ufps.dao.IPersonaDAO;
 import com.arquitectura.ufps.dao.PersonaDAO;
 import com.arquitectura.ufps.models.Persona;
+import jakarta.servlet.annotation.WebServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -20,12 +21,18 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Sistem1
  */
+@WebServlet(name = "PersonaController", urlPatterns={"/persona"})
 public class PersonaController extends HttpServlet {
     
     private static final long serialVersionUID = 1L;
     
     PersonaDAO personadao;
+    
+    public PersonaController(){
+    
+    }
 
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
