@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class PersonaDAO implements IPersonaDAO {
     
+    @Override
     public List<Persona> getPersonas(){
         
         List<Persona> personas = new ArrayList<>();
@@ -66,7 +67,7 @@ public class PersonaDAO implements IPersonaDAO {
     public int add(Persona p) {
         
         int resultado = 0;
-        String sql = "insert into persona(id, nombre, apellido, correo)values(?,?,?,?)";
+        String sql = "insert into persona(nombre,apellido,correo)values(?,?,?)";
         
         try {
             PreparedStatement ps = Conexion.Conectar().prepareStatement(sql);

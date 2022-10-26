@@ -21,6 +21,12 @@ public class Persona {
         this.apellido = apellido;
         this.correo = correo;
     }
+    
+    public Persona(String nombre, String apellido, String correo) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+    }
 
     public Persona() {
     }
