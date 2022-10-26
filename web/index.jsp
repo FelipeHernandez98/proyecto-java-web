@@ -23,8 +23,8 @@
                     <th>CORREO</th>
                     <th>ACTIONS</th>
                 </tr>
+                  <c:forEach var="persona" items="${Personas}">
                 <tr>
-                    <c:forEach var="persona" items="${Personas}">
                         <td>${persona.id}</td>
                         <td>${persona.nombre}</td>
                         <td>${persona.apellido}</td>
@@ -33,8 +33,8 @@
                             <a>Editar</a>
                             <a>Eliminar</a>
                         </td>
-                    </c:forEach>
                 </tr>
+                 </c:forEach>
             </table>
         </div>
     </body>

@@ -7,12 +7,11 @@ package com.arquitectura.ufps.controllers;
 //import com.arquitectura.ufps.dao.IPersonaDAO;
 import com.arquitectura.ufps.dao.PersonaDAO;
 import com.arquitectura.ufps.models.Persona;
-import jakarta.servlet.annotation.WebServlet;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,10 +25,10 @@ public class PersonaController extends HttpServlet {
     
     private static final long serialVersionUID = 1L;
     
-    PersonaDAO personadao;
+    private PersonaDAO personadao;
     
     public PersonaController(){
-    
+    this.personadao= new PersonaDAO();
     }
 
     

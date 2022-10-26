@@ -15,16 +15,16 @@ import java.util.logging.Logger;
  */
 public class Conexion {
     
-    private static Connection con = null;
+     private static Connection con = null;
     private static String db = "crud_java";
-    private static String URL = "jdbc:mysql://localhost:3306/" + db;
+    private static String URL = "jdbc:mariadb://localhost:3306/" + db;
     private static String USER = "root";
-    private static String PASS = "";
+    private static String PASS = "1234";
     
     public static Connection Conectar(){
         
         try{
-            Class.forName("org.mysql.jdbc.Driver");
+            Class.forName("org.mariadb.jdbc.Driver");
             con = DriverManager.getConnection(URL, USER, PASS);
             System.err.println("Se conecto con exito");
         }catch(Exception e){
