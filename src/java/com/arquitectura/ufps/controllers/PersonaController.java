@@ -58,6 +58,7 @@ public class PersonaController extends HttpServlet {
                 deletePersona(request,response);
                 break;
             default:
+                  request.getRequestDispatcher("401.html").forward(request, response);
                 throw new AssertionError();
         }
 
@@ -70,18 +71,19 @@ public class PersonaController extends HttpServlet {
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
         String correo = request.getParameter("correo");
-        System.err.println(nombre + apellido + correo);
-        persona = new Persona(0,nombre, apellido, correo);
+        System.out.println(nombre + apellido + correo);
+        persona = new Persona(nombre, apellido, correo);
         personadao.add(persona);
         request.getRequestDispatcher("PersonaController?accion=listar").forward(request, response);
 
     }
 
     public void updatePersona(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Integer id= Integer.valueOf(request.getParameter("id"));
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
         String correo = request.getParameter("correo");
-        persona = new Persona(nombre, apellido, correo);
+        persona = new Persona(id,nombre, apellido, correo);
         personadao.update(persona);
         request.getRequestDispatcher("PersonaController?accion=listar").forward(request, response);
 
@@ -89,6 +91,7 @@ public class PersonaController extends HttpServlet {
 
     public void deletePersona(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer id= Integer.valueOf(request.getParameter("id"));
+        System.out.println(id);
         personadao.delete(id);
         request.getRequestDispatcher("PersonaController?accion=listar").forward(request, response);
 
@@ -124,6 +127,8 @@ public class PersonaController extends HttpServlet {
     }
 
     private void vistaEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         Persona p= personadao.getId(Integer.valueOf(request.getParameter("id")));
+         request.setAttribute("persona", p);
          request.getRequestDispatcher("editarusuario.jsp").forward(request, response);
     }
 

@@ -12,17 +12,17 @@ import com.arquitectura.ufps.util.Conexion;
 import java.util.ArrayList;
 
 public class PersonaDAO implements IPersonaDAO {
-    
+
     @Override
-    public List<Persona> getPersonas(){
-        
+    public List<Persona> getPersonas() {
+
         List<Persona> personas = new ArrayList<>();
         String sql = "select * from persona";
-        
-        try{
+
+        try {
             PreparedStatement ps = Conexion.Conectar().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Persona p = new Persona();
                 p.setId(rs.getInt("id"));
                 p.setNombre(rs.getString("nombre"));
@@ -30,8 +30,8 @@ public class PersonaDAO implements IPersonaDAO {
                 p.setCorreo(rs.getString("correo"));
                 personas.add(p);
             }
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             System.out.println("Error: " + e);
         }
         return personas;
@@ -39,66 +39,73 @@ public class PersonaDAO implements IPersonaDAO {
 
     @Override
     public Persona getId(int id) {
-        
+
         String sql = "select * from persona where id=?";
         Persona p = new Persona();
-        
-        try{
-             PreparedStatement ps = Conexion.Conectar().prepareStatement(sql);
-             ps.setInt(1, id);
-             ResultSet rs = ps.executeQuery();
-             while(rs.next()){
-                 
-                 p.setId(rs.getInt("id"));
-                 p.setNombre(rs.getString("nombre"));
-                 p.setApellido(rs.getString("apellido"));
-                 p.setCorreo(rs.getString("correo"));
-             }
 
-         }catch(Exception e){
-             System.out.println("Error: " + e);
-         }
-        
+        try {
+            PreparedStatement ps = Conexion.Conectar().prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                p.setId(rs.getInt("id"));
+                p.setNombre(rs.getString("nombre"));
+                p.setApellido(rs.getString("apellido"));
+                p.setCorreo(rs.getString("correo"));
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+
         return p;
-        
+
     }
 
     @Override
     public int add(Persona p) {
-        
+
         int resultado = 0;
         String sql = "insert into persona(nombre,apellido,correo)values(?,?,?)";
-        
+
         try {
             PreparedStatement ps = Conexion.Conectar().prepareStatement(sql);
+            ps.setString(1, p.getNombre());
+            ps.setString(2, p.getApellido());
+            ps.setString(3, p.getCorreo());
             resultado = ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
-        
+
         return resultado;
-        
+
     }
 
     @Override
     public int update(Persona p) {
         int resultado = 0;
-        String sql = "update persona nombre = ?, apellido = ?, correo =? where id=?";
-        
+        String sql = "update persona set nombre = ?, apellido = ?, correo =? where id=?";
+
         try {
             PreparedStatement ps = Conexion.Conectar().prepareStatement(sql);
+            ps.setString(1, p.getNombre());
+            ps.setString(2, p.getApellido());
+            ps.setString(3, p.getCorreo());
+            ps.setInt(4,p.getId());
             resultado = ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
-        
+
         return resultado;
     }
 
     @Override
     public int delete(int id) {
         int resultado = 0;
-        String sql = "delete from persona where id = "+id;
+        String sql = "delete from persona where id = " + id;
         try {
             PreparedStatement ps = Conexion.Conectar().prepareStatement(sql);
             resultado = ps.executeUpdate();
@@ -107,6 +114,5 @@ public class PersonaDAO implements IPersonaDAO {
         }
         return resultado;
     }
-        
-    }
 
+}

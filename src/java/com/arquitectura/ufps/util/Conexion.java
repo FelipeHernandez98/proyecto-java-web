@@ -16,10 +16,10 @@ import java.util.logging.Logger;
 public class Conexion {
     
      private static Connection con = null;
-    private static String db = "crud_java";
-    private static String URL = "jdbc:mariadb://localhost:3306/" + db;
-    private static String USER = "root";
-    private static String PASS = "1234";
+    private static String db = "gx6en8f2c9c35vh5";
+    private static String URL = "jdbc:mariadb://iu51mf0q32fkhfpl.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/" + db;
+    private static String USER = "c2arvty9qoltrw8n";
+    private static String PASS = "k4u4tblcbo1765cw";
     
     public static Connection Conectar(){
         
