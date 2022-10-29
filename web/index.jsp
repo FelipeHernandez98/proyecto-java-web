@@ -98,7 +98,7 @@
                                                 <td>${persona.correo}</td>
                                                 <td>
                                                     <a href="PersonaController?accion=vistaEditar&id=${persona.id}"><button type="button" class="btn btn-warning">Editar</button></a> 
-                                                    <a href="PersonaController?accion=delete&id=${persona.id}"><button type="button" class="btn btn-danger">Eliminar</button></a>
+                                                    <a onClick="confirmMessage()" href="PersonaController?accion=delete&id=${persona.id}"><button type="button" class="btn btn-danger">Eliminar</button></a>
                                                 </td>                                           
                                             </tr>
                                         </c:forEach>

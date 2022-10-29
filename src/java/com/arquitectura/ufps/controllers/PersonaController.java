@@ -8,7 +8,6 @@ package com.arquitectura.ufps.controllers;
 import com.arquitectura.ufps.dao.PersonaDAO;
 import com.arquitectura.ufps.models.Persona;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -131,5 +130,6 @@ public class PersonaController extends HttpServlet {
          request.setAttribute("persona", p);
          request.getRequestDispatcher("editarusuario.jsp").forward(request, response);
     }
-
+    
+  
 }

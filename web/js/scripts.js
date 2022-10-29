@@ -23,4 +23,10 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
+    const confirmMessage=()=>{
+        if(!confirm("¿Esta seguro que desea eliminar este registro?, el proceso es irreversible")){
+            console.log("hola")
+            return;
+        }
+    }
 });
