@@ -4,10 +4,20 @@
  */
 package com.arquitectura.ufps.controllers;
 
+import org.junit.Test;
+
 /**
  *
  * @author Yeison
  */
 public class PersonaControllerTest {
+    
+    
+    
+    @Test
+    public void testConnection(){
+    
+    }
+    
     
 }
